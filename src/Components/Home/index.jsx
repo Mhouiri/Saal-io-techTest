@@ -28,7 +28,7 @@ const HandleSearch = (value) => {
   const newList = costumersList.filter((costumer) => costumer.UserName.includes(value))
   setdynamicCostumersList(newList)
 }
-
+ 
     return (
 
       <div>
