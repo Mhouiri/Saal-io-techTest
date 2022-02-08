@@ -5,13 +5,13 @@ import searchIcon from './../../assets/Images/searchIcon.png'
 function Home() {
   const [showMore, SetShowMore] = useState(false)
   const [buttonText, SetbuttonTexte] = useState("Show More")
-  const [costumersList, setCosutumerList] = useState([
+  const [costumers, setCosutumerList] = useState([
     {id: 1, FullName: "Mouhcine Houiri", UserName: "mhouiri", Email: "mouhcinehouiri@gmail.com", Gender: "Male", PhoneNumber: "+971568170492", Adresse: "Abudhabi - UAE", Url: "https://cdn.intra.42.fr/users/ahel-men.jpg"},
     {id: 2, FullName: "Amine Morchid", UserName: "mmorchid", Email: "aminemorchid@gmail.com", Gender: "Male", PhoneNumber: "+971568170492", Adresse: "Khouribga - Morocco",  Url: "https://cdn.intra.42.fr/users/mmorchid.jpg"},
     {id: 3, FullName: "Youssef Abakhar", UserName: "yabakhar", Email: "yabakhar@gmail.com", Gender: "Male", PhoneNumber: "+971568170492", Adresse: "Casablanca - France",  Url: "https://cdn.intra.42.fr/users/yabakhar.jpg"},
     {id: 4, FullName: "Ayoub Daouli", UserName: "adaouli", Email: "ayoubdaouli@gmail.com", Gender: "Male", PhoneNumber: "+971568170492", Adresse: "Paris - France",  Url: "https://cdn.intra.42.fr/users/fel-boua.jpg"},
   ])
-  const [dynamicCostumersList, setdynamicCostumersList] = useState(costumersList)
+  const [dynamicCostumersList, setdynamicCostumersList] = useState(costumers)
 
   const HandleShowMore = () => {
     if (showMore){
@@ -25,10 +25,10 @@ function Home() {
   }
 
 const HandleSearch = (value) => {
-  const newList = costumersList.filter((costumer) => costumer.UserName.includes(value))
+  const newList = costumers.filter((costumer) => costumer.UserName.includes(value))
   setdynamicCostumersList(newList)
 }
- 
+
     return (
 
       <div>
