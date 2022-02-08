@@ -36,7 +36,7 @@
     width: 90%;
     height: 100%;
     margin-top: 50px;
-    text-align: left;
+    text-align: center;
     font-family: 'Ubuntu-Bold' ;
     display: flex;
     justify-content: row;
@@ -45,7 +45,7 @@
 .User-Card{
     padding: 10px;
     text-align: center;
-    width: 25%;
+    width: 300px;
     border-radius: 10px;
     background-color: #f1e2ff;
     margin-right: 10px;
@@ -99,4 +99,9 @@
     text-align: center;
     width: 35px;
     border-width: 0px;
+}
+
+.Roller{
+    margin-left: 45%;
+    margin-top: 10%;
 }

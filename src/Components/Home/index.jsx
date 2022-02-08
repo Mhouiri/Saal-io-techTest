@@ -1,16 +1,13 @@
 import './style.css'
-import React, { useState } from 'react';
+import { Roller } from 'react-spinners-css';
+import React, { useEffect, useState } from 'react';
 import searchIcon from './../../assets/Images/searchIcon.png'
 
 function Home() {
   const [showMore, SetShowMore] = useState(false)
   const [buttonText, SetbuttonTexte] = useState("Show More")
-  const [costumers, setCosutumerList] = useState([
-    {id: 1, FullName: "Mouhcine Houiri", UserName: "mhouiri", Email: "mouhcinehouiri@gmail.com", Gender: "Male", PhoneNumber: "+971568170492", Adresse: "Abudhabi - UAE", Url: "https://cdn.intra.42.fr/users/ahel-men.jpg"},
-    {id: 2, FullName: "Amine Morchid", UserName: "mmorchid", Email: "aminemorchid@gmail.com", Gender: "Male", PhoneNumber: "+971568170492", Adresse: "Khouribga - Morocco",  Url: "https://cdn.intra.42.fr/users/mmorchid.jpg"},
-    {id: 3, FullName: "Youssef Abakhar", UserName: "yabakhar", Email: "yabakhar@gmail.com", Gender: "Male", PhoneNumber: "+971568170492", Adresse: "Casablanca - France",  Url: "https://cdn.intra.42.fr/users/yabakhar.jpg"},
-    {id: 4, FullName: "Ayoub Daouli", UserName: "adaouli", Email: "ayoubdaouli@gmail.com", Gender: "Male", PhoneNumber: "+971568170492", Adresse: "Paris - France",  Url: "https://cdn.intra.42.fr/users/fel-boua.jpg"},
-  ])
+  const [costumers, setCosutumerList] = useState(null)
+  const [isPending, setIsPending] = useState(true)
   const [dynamicCostumersList, setdynamicCostumersList] = useState(costumers)
 
   const HandleShowMore = () => {
@@ -24,13 +21,25 @@ function Home() {
     }
   }
 
-const HandleSearch = (value) => {
-  const newList = costumers.filter((costumer) => costumer.UserName.includes(value))
-  setdynamicCostumersList(newList)
-}
+  const HandleSearch = (value) => {
+    const newList = costumers.filter((costumer) => costumer.UserName.includes(value))
+    setdynamicCostumersList(newList)
+  }
+
+  useEffect(() => {
+    setTimeout(() => {
+      fetch('http://localhost:8000/costumers')
+      .then(result => {
+        return result.json()
+      }).then(data => {
+        setCosutumerList(data)
+        setdynamicCostumersList(data)
+        setIsPending(false)
+      })
+    }, 1000)
+  }, [])
 
     return (
-
       <div>
         <div className="Header" style={{color: '#622A93'}}>
           <div style={{fontSize: 30}}>List of customers</div>
@@ -49,6 +58,7 @@ const HandleSearch = (value) => {
           </div>
         </div>
         <div className="Container">
+        {isPending && <div className='Roller'><Roller color='#3e4c5c' /></div>}
         {dynamicCostumersList && dynamicCostumersList.map((val, key) => {
           return(
             <div
