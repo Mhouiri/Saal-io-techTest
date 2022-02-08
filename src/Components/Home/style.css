@@ -1,0 +1,103 @@
+@font-face {
+    font-family: 'Ubuntu-Light';
+    src: url(./../../assets/fonts/Ubuntu/Ubuntu-Light.ttf);
+}
+
+@font-face {
+    font-family: 'Ubuntu-Bold';
+    src: url(./../../assets/fonts/Ubuntu/Ubuntu-Bold.ttf);
+}
+
+@font-face {
+    font-family: 'Ubuntu-Bold';
+    src: url(./../../assets/fonts/Ubuntu/Ubuntu-Medium.ttf);
+}
+
+@font-face {
+    font-family: 'Ubuntu-Bold';
+    src: url(./../../assets/fonts/Ubuntu/Ubuntu-Regular.ttf);
+}
+
+.h1{
+    color: #622A93;
+}
+
+.Header{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 50px;
+    font-family: 'Ubuntu-Bold' ;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Container{
+    margin: 0 auto;
+    width: 90%;
+    height: 100%;
+    margin-top: 50px;
+    text-align: left;
+    font-family: 'Ubuntu-Bold' ;
+    display: flex;
+    justify-content: row;
+}
+
+.User-Card{
+    padding: 10px;
+    text-align: center;
+    width: 25%;
+    border-radius: 10px;
+    background-color: #f1e2ff;
+    margin-right: 10px;
+}
+
+.ProfileImage{
+    margin-bottom: 10px;
+    background-color: #622A93;
+    border-radius: 50%;
+    border-width: 0px;
+}
+
+.ShowMore-btn{
+    margin-top: 30px;
+    margin-bottom: 15px;
+    background-color: transparent;
+    color: #622A93;
+    font-family: 'Ubuntu-Bold' ;
+    border-color: #622A93;
+    /* border-width: 2px; */
+    width: 50%;
+    height: 35px;
+    cursor: pointer;
+}
+
+.ShowMore-btn:hover{
+    background-color: #622A93;
+    color: white;
+}
+
+.User-infos{
+    text-align: left;
+    padding-left: 10%;
+}
+
+.input{
+    height: 30px;
+    /* margin-top: 1.7%; */
+    font-family: 'Ubuntu-Bold' ;
+    margin-left: 1px;
+}
+
+.search{
+    display: flex;
+    justify-content: row;
+}
+
+.search-button{
+    cursor: pointer;
+    border-radius: 2px;
+    background-color: indigo;
+    text-align: center;
+    width: 35px;
+    border-width: 0px;
+}
