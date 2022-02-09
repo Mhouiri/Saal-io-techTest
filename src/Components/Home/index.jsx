@@ -45,7 +45,7 @@ function Home() {
           <div style={{fontSize: 30}}>List of customers</div>
           <div className="search">
             <button
-            className='search-button'>
+            className='search-icon'>
             <img
                   src={searchIcon} alt=""
                   style={{ width: 20, height: 20}}
