@@ -30,9 +30,8 @@
    npm run start
    ```
 ### Server 
-2. in the server directory run
- ```sh
-   nodemon run server.js
+2. Creating a server & and watch the data stores in the server file /data
+ ```npx json-server --watch data/db.json --port 8000
    ```
    
  <!-- CONTACT -->
