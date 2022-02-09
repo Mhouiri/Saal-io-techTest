@@ -31,8 +31,8 @@
    ```
 ### Server 
 2. Creating a server & and watch the data stores in the server file /data
- ```sh npx json-server --watch data/db.json --port 8000
-   ```
+ 	sh npx json-server --watch data/db.json --port 8000
+   
    
  <!-- CONTACT -->
 ## Contact
