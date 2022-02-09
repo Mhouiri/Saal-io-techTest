@@ -16,20 +16,20 @@
 * json-server
 
 
-### Installation
+## Installation
 
 1. Clone the repo
    ```sh
    git clone https://github.com/Mhouiri/Saal-io-techTest
    ```
 
-### Run the app 
-## Client 
+## Run the app 
+### Client 
 1. in the client directory run
  ```sh
    npm run start
    ```
-## Server 
+### Server 
 2. in the server directory run
  ```sh
    nodemon run server.js
