@@ -1,24 +1,32 @@
 import './style.css'
+import ReactPaginate from 'react-paginate'
 import { Roller } from 'react-spinners-css';
 import React, { useEffect, useState } from 'react';
 import searchIcon from './../../assets/Images/searchIcon.png'
+
 
 function Home() {
   const [showMore, SetShowMore] = useState(false)
   const [buttonText, SetbuttonTexte] = useState("Show More")
   const [costumers, setCosutumerList] = useState(null)
   const [isPending, setIsPending] = useState(true)
-  const [dynamicCostumersList, setdynamicCostumersList] = useState(costumers)
+  const [dynamicCostumersList, setdynamicCostumersList] = useState([])
+
+  // pagination
+  const [pageNumber, setPageNumber] = useState(0)
+  const costumerPerPage = 2
+  const visitedPages = pageNumber * costumerPerPage
+  // const displayCostumers = costumers.slice(visitedPages, visitedPages + costumerPerPage)
 
   const HandleShowMore = () => {
-    if (showMore){
-      SetShowMore(false);
-      SetbuttonTexte("Show More")
-    }
-    else{
-      SetShowMore(true);
-      SetbuttonTexte("Show Less")
-    }
+      if (showMore){
+        SetShowMore(false);
+        SetbuttonTexte("Show More")
+      }
+      else{
+        SetShowMore(true);
+        SetbuttonTexte("Show Less")
+      }
   }
 
   const HandleSearch = (value) => {
@@ -32,8 +40,33 @@ function Home() {
       .then(result => {
         return result.json()
       }).then(data => {
-        setCosutumerList(data)
-        setdynamicCostumersList(data)
+        // setCosutumerList(data)
+        setCosutumerList(data.slice(visitedPages, visitedPages + costumerPerPage).map((val, key) => {
+          return(
+            <div
+            key={key}
+            className="User-Card">
+              <img
+                  className="ProfileImage"
+                  src={val.Url} alt=""
+                  style={{ width: 90, height: 90, marginTop: 20}}
+              />
+              <div className="User-infos">
+                <div style={{marginTop: 10}}>Full Name : {val.FullName}</div>
+                <div style={{marginTop: 10}}>Username : {val.UserName}</div>
+                <div style={{marginTop: 10}}>Email : {val.Email}</div>
+                <div style={{marginTop: 10}} >{!showMore ? "" : "Gender : " + val.Gender}</div>
+                <div style={{marginTop: 10}} >{!showMore ? "" : "Adress : " +  val.Adresse}</div>
+                <div style={{marginTop: 10}} >{!showMore ? "" : "PhoneNumber : " + val.PhoneNumber}</div>
+              </div>
+              <button
+                onClick={HandleShowMore}
+                className='ShowMore-btn'>
+                {buttonText}
+              </button>
+          </div>
+          )
+        }))
         setIsPending(false)
       })
     }, 1000)
@@ -59,32 +92,7 @@ function Home() {
         </div>
         <div className="Container">
         {isPending && <div className='Roller'><Roller color='#3e4c5c' /></div>}
-        {dynamicCostumersList && dynamicCostumersList.map((val, key) => {
-          return(
-            <div
-            key={key}
-            className="User-Card">
-              <img
-                  className="ProfileImage"
-                  src={val.Url} alt=""
-                  style={{ width: 90, height: 90, marginTop: 20}}
-              />
-              <div className="User-infos">
-                <div style={{marginTop: 10}}>Full Name : {val.FullName}</div>
-                <div style={{marginTop: 10}}>Username : {val.UserName}</div>
-                <div style={{marginTop: 10}}>Email : {val.Email}</div>
-                <div style={{marginTop: 10}} >{!showMore ? "" : "Gender : " + val.Gender}</div>
-                <div style={{marginTop: 10}} >{!showMore ? "" : "Adress : " +  val.Adresse}</div>
-                <div style={{marginTop: 10}} >{!showMore ? "" : "PhoneNumber : " + val.PhoneNumber}</div>
-              </div>
-              <button
-                onClick={HandleShowMore}
-                className='ShowMore-btn'>
-                {buttonText}
-              </button>
-          </div>
-          )
-        })}
+        {costumers}
         </div>
       </div>
     );
