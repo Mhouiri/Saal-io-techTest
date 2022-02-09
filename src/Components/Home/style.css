@@ -63,6 +63,8 @@
     color: #622A93;
     font-family: 'Ubuntu-Bold' ;
     border-color: #622A93;
+    border-radius: 5px;
+    border: 2px solid #622A93;
     width: 50%;
     height: 35px;
     cursor: pointer;
@@ -80,7 +82,6 @@
 
 .input{
     height: 30px;
-    /* margin-top: 1.7%; */
     font-family: 'Ubuntu-Bold' ;
     margin-left: 1px;
 }
@@ -93,7 +94,7 @@
 .search-icon{
     cursor: pointer;
     border-radius: 2px;
-    background-color: indigo;
+    background-color: #622A93;
     text-align: center;
     width: 35px;
     border-width: 0px;
@@ -103,3 +104,32 @@
     margin-left: 45%;
     margin-top: 10%;
 }
+
+.pagination-btns{
+    margin-top: 80px;
+    width: 80%;
+    height: 40px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-left: 5%;
+  }
+
+  .pagination-btns a {
+    padding: 10px;
+    margin: 6px;
+    border-radius: 5px;
+    border: 2px solid #622A93;
+    color: #622A93;
+    cursor: pointer;
+  }
+
+  .pagination-btns a:hover {
+    color: white;
+    background-color: #622A93;
+  }
+
+  .paginationActive a {
+    color: white;
+    background-color: #622A93;
+  }

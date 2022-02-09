@@ -8,15 +8,14 @@ import searchIcon from './../../assets/Images/searchIcon.png'
 function Home() {
   const [showMore, SetShowMore] = useState(false)
   const [buttonText, SetbuttonTexte] = useState("Show More")
-  const [costumers, setCosutumerList] = useState(null)
   const [isPending, setIsPending] = useState(true)
-  const [dynamicCostumersList, setdynamicCostumersList] = useState([])
+  const [allCostumers, setAllCosutumers] = useState(null)
+  const [displayedCostumers, setDisplayedCostumers] = useState(null)
 
   // pagination
+  const costumerPerPage = 1
   const [pageNumber, setPageNumber] = useState(0)
-  const costumerPerPage = 2
   const visitedPages = pageNumber * costumerPerPage
-  // const displayCostumers = costumers.slice(visitedPages, visitedPages + costumerPerPage)
 
   const HandleShowMore = () => {
       if (showMore){
@@ -30,8 +29,8 @@ function Home() {
   }
 
   const HandleSearch = (value) => {
-    const newList = costumers.filter((costumer) => costumer.UserName.includes(value))
-    setdynamicCostumersList(newList)
+    const newList = allCostumers.filter((costumer) => costumer.UserName.includes(value))
+    setDisplayedCostumers(newList.slice(visitedPages, visitedPages + costumerPerPage))
   }
 
   useEffect(() => {
@@ -40,8 +39,42 @@ function Home() {
       .then(result => {
         return result.json()
       }).then(data => {
-        // setCosutumerList(data)
-        setCosutumerList(data.slice(visitedPages, visitedPages + costumerPerPage).map((val, key) => {
+        setAllCosutumers(data)
+        setDisplayedCostumers(data.slice(visitedPages, visitedPages + costumerPerPage))
+        setIsPending(false)
+      })
+    }, 1000)
+  }, [])
+
+  const onPageChange = ({selected}) => {
+    setPageNumber(selected)
+    console.log("page Number " + pageNumber)
+    setDisplayedCostumers(allCostumers.slice(visitedPages, visitedPages + costumerPerPage))
+  }
+
+  const pageCount = (allCostumers ? Math.ceil(allCostumers.length / costumerPerPage) : 0)
+
+    return (
+      <div>
+        <div className="Header" style={{color: '#622A93'}}>
+          <div style={{fontSize: 30}}>List of customers</div>
+          <div className="search">
+            <button
+            className='search-icon'>
+            <img
+                  src={searchIcon} alt=""
+                  style={{ width: 20, height: 20}}
+              />
+            </button>
+              <input
+              onChange={(e) => HandleSearch(e.target.value)}
+              className="input"
+            />
+          </div>
+        </div>
+        <div className="Container">
+        {isPending && <div className='Roller'><Roller color='#3e4c5c' /></div>}
+        {displayedCostumers && displayedCostumers.map((val, key) => {
           return(
             <div
             key={key}
@@ -66,34 +99,18 @@ function Home() {
               </button>
           </div>
           )
-        }))
-        setIsPending(false)
-      })
-    }, 1000)
-  }, [])
-
-    return (
-      <div>
-        <div className="Header" style={{color: '#622A93'}}>
-          <div style={{fontSize: 30}}>List of customers</div>
-          <div className="search">
-            <button
-            className='search-icon'>
-            <img
-                  src={searchIcon} alt=""
-                  style={{ width: 20, height: 20}}
-              />
-            </button>
-              <input
-              onChange={(e) => HandleSearch(e.target.value)}
-              className="input"
-            />
-          </div>
+        })}
         </div>
-        <div className="Container">
-        {isPending && <div className='Roller'><Roller color='#3e4c5c' /></div>}
-        {costumers}
-        </div>
+        <ReactPaginate
+        previousLabel={"Previous"}
+        nextLabel={"Next"}
+        pageCount={pageCount}
+        onPageChange={onPageChange}
+        containerClassName='pagination-btns'
+        previousLinkClassName='previous-btn'
+        nextLinkClassName='next-btn'
+        activeClassName='paginationActive'
+        />
       </div>
     );
   }
