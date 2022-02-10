@@ -19,15 +19,15 @@
 * json-server
 
 
-## Installation
+## Installation in development mode
 
 1. Clone the repo.
    ```sh
    git clone https://github.com/Mhouiri/Saal-io-techTest
    ```
 
-## Run the app 
-### 1.Client 
+### Run the app 
+#### 1.Client 
  in the client directory run.
  ```sh
    # Install all dependencies
@@ -37,7 +37,7 @@
    # Start the client server
    npm run start
    ```
-### 2.Server / Api
+#### 2.Server / Api
   Create and start the API mockup server.
  ```sh 
    npx json-server --watch data/db.json --port 8000
