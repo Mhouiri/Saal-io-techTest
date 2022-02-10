@@ -32,7 +32,8 @@
 ### Server 
 2. Creating a watcher of the server/Api  to watch the data stores in that server/Api (/data)
  	```sh 
-	npx json-server --watch data/db.json --port 8000```
+	npx json-server --watch data/db.json --port 8000
+	```
    
    
  <!-- CONTACT -->
