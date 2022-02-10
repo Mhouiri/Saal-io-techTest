@@ -24,7 +24,7 @@
    ```
 
 ## Run the app 
-### 1 . Client 
+### Client 
  in the client directory run
  ```sh
    npm run start
