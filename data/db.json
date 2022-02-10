@@ -1,5 +1,5 @@
 {
-    "costumers" : [
+    "Customers" : [
     {"id": 1, "FullName": "Mouhcine Houiri", "UserName": "mhouiri", "Email": "mhouiri@gmail.com", "Gender": "Male", "PhoneNumber": "+971568170492", "Adresse": "Abudhabi - UAE", "Url": "https://cdn.intra.42.fr/users/mhouiri.jpg"},
     {"id": 2, "FullName": "Amine Morchid", "UserName": "mmorchid", "Email": "mmorchid@gmail.com", "Gender": "Male", "PhoneNumber": "+971568170492", "Adresse": "Khouribga - Morocco",  "Url": "https://cdn.intra.42.fr/users/mmorchid.jpg"},
     {"id": 3, "FullName": "Youssef Abakhar", "UserName": "yabakhar", "Email": "yabakhar@gmail.com", "Gender": "Male", "PhoneNumber": "+971568170492", "Adresse": "Casablanca - France",  "Url": "https://cdn.intra.42.fr/users/yabakhar.jpg"},

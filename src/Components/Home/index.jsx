@@ -9,13 +9,13 @@ function Home() {
   const [showMore, SetShowMore] = useState({})
   const [buttonText, SetbuttonTexte] = useState({})
   const [isPending, setIsPending] = useState(true)
-  const [allCostumers, setAllCosutumers] = useState(null)
-  const [displayedCostumers, setDisplayedCostumers] = useState(null)
+  const [allCustomers, setAllCosutumers] = useState(null)
+  const [displayedCustomers, setDisplayedCustomers] = useState(null)
 
   // pagination
-  const costumerPerPage = 4
+  const customerPerPage = 4
   const [pageNumber, setPageNumber] = useState(0)
-  const visitedPages = pageNumber * costumerPerPage
+  const visitedPages = pageNumber * customerPerPage
 
   const HandleShowMore = (e, id) => {
     e.preventDefault();
@@ -31,11 +31,11 @@ function Home() {
 
 
 // Display the new list of customers filtered based on the value of the search box
-// create new list and assign it to displayedCostumers variable
+// create new list and assign it to displayedCustomers variable
 
   const HandleSearch = (value) => {
-    const newList = allCostumers.filter((costumer) => costumer.UserName.includes(value))
-    setDisplayedCostumers(newList.slice(visitedPages, visitedPages + costumerPerPage))
+    const newList = allCustomers.filter((customer) => customer.UserName.includes(value))
+    setDisplayedCustomers(newList.slice(visitedPages, visitedPages + customerPerPage))
   }
 
 
@@ -43,12 +43,12 @@ function Home() {
 
   useEffect(() => {
     setTimeout(() => {
-      fetch('http://localhost:8000/costumers')
+      fetch('http://localhost:8000/Customers')
       .then(result => {
         return result.json()
       }).then(data => {
         setAllCosutumers(data)
-        setDisplayedCostumers(data.slice(visitedPages, visitedPages + costumerPerPage))
+        setDisplayedCustomers(data.slice(visitedPages, visitedPages + customerPerPage))
         setIsPending(false)
       })
     }, 1000)
@@ -59,7 +59,7 @@ function Home() {
 
   const onPageChange = async ({selected}) => {
     setPageNumber(selected)
-    setDisplayedCostumers(allCostumers.slice(selected * costumerPerPage, (selected * costumerPerPage) + costumerPerPage))
+    setDisplayedCustomers(allCustomers.slice(selected * customerPerPage, (selected * customerPerPage) + customerPerPage))
     setUpdate({});
   }
 
@@ -68,7 +68,7 @@ const [, setUpdate] = useState();
 
 
 // Calculate how many page based on how total customers and customers per page
-  const pageCount = (allCostumers ? Math.ceil(allCostumers.length / costumerPerPage) : 0)
+  const pageCount = (allCustomers ? Math.ceil(allCustomers.length / customerPerPage) : 0)
 
     return (
       // The view could be responsive , But due to my work and my schedule i had no time
@@ -91,7 +91,7 @@ const [, setUpdate] = useState();
         </div>
         <div className="Container">
         {isPending && <div className='Roller'><Roller color='#3e4c5c' /></div>}
-        {displayedCostumers && displayedCostumers.map((val, key) => {
+        {displayedCustomers && displayedCustomers.map((val, key) => {
           return(
             <div
             key={key}
