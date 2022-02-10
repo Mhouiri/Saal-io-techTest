@@ -6,7 +6,7 @@
 <p>A web plateforme solution to display and search as you type for user information. 
 </p>
 
-## Feauture
+## Feautures
 * List users.
 * Display user information.
 * Pagination.
