@@ -71,7 +71,7 @@ const [, setUpdate] = useState();
   const pageCount = (allCustomers ? Math.ceil(allCustomers.length / customerPerPage) : 0)
 
     return (
-      // The view could be responsive , But due to my work and my schedule i had no time
+      // It could be responsive , But due to my work and my schedule i had no time
       <div>
         <div className="Header" style={{color: '#622A93'}}>
           <div style={{fontSize: 15}}>List of customers</div>
