@@ -3,9 +3,15 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<p>It's a prototype of website that the company will use to search for user data 
+<p>A web plateforme solution to display and search as you type for user information. 
 </p>
 
+## Feauture
+* List users.
+* Display user information.
+* Pagination.
+* Search as you type applied on your name. 
+ 
 ## Built With
 
 * Node 12.20.1
@@ -15,23 +21,27 @@
 
 ## Installation
 
-1. Clone the repo
+1. Clone the repo.
    ```sh
    git clone https://github.com/Mhouiri/Saal-io-techTest
    ```
 
 ## Run the app 
 ### 1.Client 
- in the client directory run
+ in the client directory run.
  ```sh
+   # Install all dependencies
+   npm i
+   ```
+```sh
+   # Start the client server
    npm run start
    ```
 ### 2.Server / Api
-  Creating a watcher of the server/Api  to watch the data stores in that server/Api (/data)
+  Create and start the API mockup server.
  ```sh 
-npx json-server --watch data/db.json --port 8000
+   npx json-server --watch data/db.json --port 8000
 ```
-   
    
  <!-- CONTACT -->
 ## Contact
