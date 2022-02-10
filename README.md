@@ -7,10 +7,10 @@
 </p>
 
 ## Feautures
-* List users.
-* Display user information.
+* List customer.
+* Display customers information.
 * Pagination.
-* Search as you type applied on your name. 
+* Search as you type applied on the customer username. 
  
 ## Built With
 
