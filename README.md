@@ -24,12 +24,12 @@
    ```
 
 ## Run the app 
-### Client 
+### 1 . Client 
 1. in the client directory run
  ```sh
    npm run start
    ```
-### Server / Api
+### 2 . Server / Api
 2. Creating a watcher of the server/Api  to watch the data stores in that server/Api (/data)
  	```sh 
 	npx json-server --watch data/db.json --port 8000
