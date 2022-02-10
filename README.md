@@ -1,4 +1,4 @@
-# 42adCompanies
+# Saal-io-techTest
 <div align="center">
 	<img src="./client/src/Components/LoginPage/assets/companiesLogo.png" alt="42adbocal" width="300" height="100">
 </div>
