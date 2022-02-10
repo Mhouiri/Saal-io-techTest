@@ -6,7 +6,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<p>42adCompanies is a platform to manage internships and job offers. Sign in to create a company profile. Post and manage offers with ease and get access to our ever growing network of talented programmers.
+<p>It's a prototype of website that the company will use to search for user data 
 </p>
 
 ## Built With
@@ -30,8 +30,8 @@
    npm run start
    ```
 ### Server 
-2. Creating a server & and watch the data stores in the server file /data
- 	sh npx json-server --watch data/db.json --port 8000
+2. Creating a watcher of the server/Api  to watch the data stores in that server/Api (/data)
+ 	```sh npx json-server --watch data/db.json --port 8000```
    
    
  <!-- CONTACT -->
