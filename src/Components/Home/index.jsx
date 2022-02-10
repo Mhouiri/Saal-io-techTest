@@ -71,9 +71,10 @@ const [, setUpdate] = useState();
   const pageCount = (allCostumers ? Math.ceil(allCostumers.length / costumerPerPage) : 0)
 
     return (
+      // The view could be responsive , But due to my work and my schedule i had no time
       <div>
         <div className="Header" style={{color: '#622A93'}}>
-          <div style={{fontSize: 30}}>List of customers</div>
+          <div style={{fontSize: 15}}>List of customers</div>
           <div className="search">
             <button
             className='search-icon'>
