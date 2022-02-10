@@ -6,32 +6,40 @@ import searchIcon from './../../assets/Images/searchIcon.png'
 
 
 function Home() {
-  const [showMore, SetShowMore] = useState(false)
-  const [buttonText, SetbuttonTexte] = useState("Show More")
+  const [showMore, SetShowMore] = useState({})
+  const [buttonText, SetbuttonTexte] = useState({})
   const [isPending, setIsPending] = useState(true)
   const [allCostumers, setAllCosutumers] = useState(null)
   const [displayedCostumers, setDisplayedCostumers] = useState(null)
 
   // pagination
-  const costumerPerPage = 1
+  const costumerPerPage = 4
   const [pageNumber, setPageNumber] = useState(0)
   const visitedPages = pageNumber * costumerPerPage
 
-  const HandleShowMore = () => {
-      if (showMore){
-        SetShowMore(false);
-        SetbuttonTexte("Show More")
+  const HandleShowMore = (e, id) => {
+    e.preventDefault();
+      if (showMore[id]){
+        SetShowMore({[id]: false});
+        SetbuttonTexte({[id]: "Show More"})
       }
       else{
-        SetShowMore(true);
-        SetbuttonTexte("Show Less")
+        SetShowMore({[id]: true});
+        SetbuttonTexte({[id]: "Show Less"})
       }
   }
+
+
+// Display the new list of customers filtered based on the value of the search box
+// create new list and assign it to displayedCostumers variable
 
   const HandleSearch = (value) => {
     const newList = allCostumers.filter((costumer) => costumer.UserName.includes(value))
     setDisplayedCostumers(newList.slice(visitedPages, visitedPages + costumerPerPage))
   }
+
+
+// Fetch data from the server watched (/data/db)
 
   useEffect(() => {
     setTimeout(() => {
@@ -46,12 +54,20 @@ function Home() {
     }, 1000)
   }, [])
 
-  const onPageChange = ({selected}) => {
+// Change page when Onclick on pagination buttons
+// Change the current page by assigning the value of the page clicked => setPageNumber(new value)
+
+  const onPageChange = async ({selected}) => {
     setPageNumber(selected)
-    console.log("page Number " + pageNumber)
-    setDisplayedCostumers(allCostumers.slice(visitedPages, visitedPages + costumerPerPage))
+    setDisplayedCostumers(allCostumers.slice(selected * costumerPerPage, (selected * costumerPerPage) + costumerPerPage))
+    setUpdate({});
   }
 
+// Update state
+const [, setUpdate] = useState();
+
+
+// Calculate how many page based on how total customers and customers per page
   const pageCount = (allCostumers ? Math.ceil(allCostumers.length / costumerPerPage) : 0)
 
     return (
@@ -88,14 +104,14 @@ function Home() {
                 <div style={{marginTop: 10}}>Full Name : {val.FullName}</div>
                 <div style={{marginTop: 10}}>Username : {val.UserName}</div>
                 <div style={{marginTop: 10}}>Email : {val.Email}</div>
-                <div style={{marginTop: 10}} >{!showMore ? "" : "Gender : " + val.Gender}</div>
-                <div style={{marginTop: 10}} >{!showMore ? "" : "Adress : " +  val.Adresse}</div>
-                <div style={{marginTop: 10}} >{!showMore ? "" : "PhoneNumber : " + val.PhoneNumber}</div>
+                <div style={{marginTop: 10}} >{!showMore[val.id] ? "" : "Gender : " + val.Gender}</div>
+                <div style={{marginTop: 10}} >{!showMore[val.id] ? "" : "Adress : " +  val.Adresse}</div>
+                <div style={{marginTop: 10}} >{!showMore[val.id] ? "" : "PhoneNumber : " + val.PhoneNumber}</div>
               </div>
               <button
-                onClick={HandleShowMore}
+                onClick={(e) => HandleShowMore(e, val.id)}
                 className='ShowMore-btn'>
-                {buttonText}
+                {buttonText[val.id] ? buttonText[val.id] : "Show more" }
               </button>
           </div>
           )
